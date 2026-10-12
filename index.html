@@ -1,22 +1,143 @@
-<!doctype html>
-<html lang="fr">
+<!DOCTYPE html>
+<html lang="ary" dir="rtl">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="theme-color" content="#081b2b">
-<meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-<meta name="apple-mobile-web-app-title" content="SAFFARA">
-<link rel="manifest" href="manifest.json">
-<link rel="apple-touch-icon" href="icon-192.png">
-<title>SAFFARA — Quiz d’arbitrage</title>
+<title>SAFFARA - كويز التحكيم</title>
 <style>
-:root{color-scheme:dark;--bg:#071521;--panel:#102637;--panel2:#163348;--text:#f4f8fb;--muted:#a9bfce;--green:#22c55e;--gold:#f6c453;--red:#fb7185}
-*{box-sizing:border-box}body{margin:0;background:radial-gradient(ellipse at top,#123b4b 0,#071521 55%);color:var(--text);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;min-height:100vh;padding:env(safe-area-inset-top) 16px env(safe-area-inset-bottom)}
-main{max-width:620px;margin:0 auto;padding:22px 0 32px}.top{display:flex;align-items:center;justify-content:space-between;margin-bottom:22px}.brand{display:flex;align-items:center;gap:10px}.ball{width:44px;height:44px;border-radius:14px;background:#b9f7cd;color:#062317;display:grid;place-items:center;font-size:25px}.brand h1{font-size:22px;letter-spacing:2px;margin:0}.brand p{margin:3px 0 0;color:var(--muted);font-size:12px}.pill{border:1px solid #315064;color:#c8dbe5;border-radius:99px;padding:7px 10px;font-size:11px}
-.hero,.card{background:linear-gradient(145deg,rgba(22,51,72,.97),rgba(12,32,47,.98));border:1px solid #244559;border-radius:22px;padding:20px;box-shadow:0 12px 30px #0002}.hero h2{font-size:27px;line-height:1.1;margin:0 0 10px}.hero p{color:var(--muted);line-height:1.5;margin:0 0 18px}.stats{display:flex;gap:10px}.stat{flex:1;background:#091c2a;border-radius:14px;padding:12px}.stat strong{display:block;font-size:20px}.stat span{font-size:11px;color:var(--muted)}button{font:inherit;cursor:pointer}.primary{border:0;border-radius:14px;background:#b9f7cd;color:#062317;font-weight:800;padding:15px 18px;width:100%;margin-top:18px;font-size:16px}.secondary{border:1px solid #38576b;border-radius:12px;background:#102637;color:var(--text);padding:12px 14px;font-weight:650}.sectionhead{display:flex;justify-content:space-between;align-items:center;margin:22px 2px 10px;color:#c3d5df;font-size:13px}.card{padding:18px}.progressline{height:6px;background:#284152;border-radius:99px;overflow:hidden;margin:10px 0 18px}.progressline div{height:100%;background:#b9f7cd;width:0;transition:width .2s}.qmeta{color:#b9f7cd;font-size:12px;font-weight:750;letter-spacing:1px}.question{font-size:21px;line-height:1.35;margin:12px 0 18px}.answers{display:grid;gap:10px}.answer{width:100%;text-align:left;border:1px solid #35566b;border-radius:13px;background:#0a1d2b;color:var(--text);padding:14px;display:flex;gap:11px;align-items:center;line-height:1.35}.letter{width:28px;height:28px;border-radius:9px;background:#1a3a4e;display:grid;place-items:center;flex-shrink:0;font-size:12px;font-weight:800}.answer:disabled{cursor:default;opacity:1}.answer.correct{border-color:var(--green);background:#123a31}.answer.wrong{border-color:var(--red);background:#40232c}.answer.correct .letter{background:var(--green);color:#052015}.answer.wrong .letter{background:var(--red);color:#28050d}.feedback{margin-top:14px;border-radius:13px;background:#091c2a;padding:14px;color:#d4e4ec;line-height:1.5;font-size:14px}.feedback b{display:block;margin-bottom:4px}.hidden{display:none!important}.resultscore{font-size:54px;font-weight:900;letter-spacing:-2px;margin:8px 0}.resultscore small{font-size:19px;color:var(--muted);letter-spacing:0}.reviewitem{padding:14px 0;border-bottom:1px solid #284354}.reviewitem:last-child{border-bottom:0}.reviewitem h3{font-size:15px;line-height:1.4;margin:0 0 8px}.reviewitem p{font-size:13px;color:var(--muted);line-height:1.45;margin:5px 0}.tag{display:inline-block;border-radius:99px;padding:4px 8px;font-size:11px;font-weight:750}.good{background:#164532;color:#b9f7cd}.bad{background:#482630;color:#ffc2cc}.foot{text-align:center;color:#688394;font-size:11px;margin-top:20px}
+*{box-sizing:border-box}
+body{margin:0;padding:20px;font-family:Arial,Tahoma,sans-serif;background:#081b2b;color:#f4f8fb;line-height:1.8}
+main{max-width:650px;margin:auto}
+header,.card{background:#102637;border:1px solid #29475a;border-radius:20px;padding:20px;margin-bottom:16px}
+header{text-align:center}
+h1{color:#b9f7cd;margin:0;font-size:32px;direction:ltr}
+h2{line-height:1.6}
+.muted{color:#b3c6d2}
+button{font:inherit;cursor:pointer;border-radius:12px;padding:12px;border:1px solid #426075}
+.primary{width:100%;background:#b9f7cd;color:#082317;font-weight:bold;border:0;margin-top:15px}
+.answer{width:100%;display:block;text-align:right;background:#0a1d2b;color:white;margin:9px 0;border-color:#35566b}
+.answer.correct{background:#145335;border-color:#4ade80}
+.answer.wrong{background:#512631;border-color:#fb7185}
+button:disabled{cursor:default}
+.hidden{display:none}
+.progress{height:7px;background:#294253;border-radius:8px;overflow:hidden}
+#bar{height:100%;width:0;background:#b9f7cd}
+#feedback{padding:12px;margin-top:12px;background:#091c2a;border-radius:12px}
+.score{font-size:38px;color:#b9f7cd;font-weight:bold}
+.small{font-size:13px;color:#b3c6d2}
 </style>
 </head>
+<body>
+<main>
+<header>
+<h1>SAFFARA ⚽</h1>
+<p class="muted">كويز ديال قوانين التحكيم</p>
+</header>
+
+<section id="home" class="card">
+<h2>واش كتعرف قوانين الكورة؟ 🇲🇦</h2>
+<p>جاوب على الأسئلة، جمع النقط، وتعلّم من التصحيح ديال كل سؤال.</p>
+<p>⚽ 10 أسئلة · 🏆 20 نقطة كحد أقصى</p>
+<button class="primary" onclick="start()">بدا الكويز</button>
+</section>
+
+<section id="game" class="card hidden">
+<div id="progressText">السؤال 1 من 10</div>
+<div class="progress"><div id="bar"></div></div>
+<h2 id="question"></h2>
+<div id="answers"></div>
+<div id="feedback" class="hidden" aria-live="polite"></div>
+<button id="next" class="primary hidden" onclick="nextQuestion()">السؤال اللي من بعد</button>
+</section>
+
+<section id="result" class="card hidden">
+<h2>سالينا الكويز! ⚽</h2>
+<div class="score" id="score"></div>
+<p id="message"></p>
+<h3>التصحيح ديالك</h3>
+<div id="review"></div>
+<button class="primary" onclick="start()">عاود الكويز ↻</button>
+</section>
+<p class="small" style="text-align:center">SAFFARA · تعلّم قوانين كرة القدم</p>
+</main>
+
+<script>
+const qs=[
+{q:"واش غير الوقوف ف وضعية التسلل كافي باش الحكم يصفر؟",a:["إييه ديما","لا، خاص اللاعب يتدخل فاللعب أو يأثر على الخصم","غير إلا كان قريب للمرمى"],c:1,e:"وضعية التسلل بوحدها ماشي مخالفة. خاص اللاعب يتدخل فاللعب، أو يأثر على الخصم، أو يستافد من الوضعية."},
+{q:"مدافع دار لمسة يد مخالفة داخل منطقة الجزاء ديالو. شنو القرار غالباً؟",a:["ضربة جزاء","ضربة مرمى","رمية تماس"],c:0,e:"إلا كانت لمسة اليد مخالفة كتستوجب ضربة حرة مباشرة داخل منطقة الجزاء ديال المدافع، كتعطى ضربة جزاء، مع مراعاة الاستثناءات القانونية."},
+{q:"شحال هو أقل عدد ديال اللاعبين فالفريق باش الماتش يكمل؟",a:["5","6","7"],c:2,e:"حسب قوانين اللعب، الماتش ما يقدرش يبدا ولا يكمل إلا كان شي فريق فيه أقل من 7 لاعبين."},
+{q:"لاعب خدا جوج بطاقات صفرا فماتش واحد. شنو كيوقع؟",a:["كيبقى يلعب","كيخرج مطرود","كيضيع غير ضربة جزاء"],c:1,e:"جوج إنذارات صفرا فماتش واحد كيعنيو الطرد بالبطاقة الحمرا."},
+{q:"ف ضربة البداية، فوقاش كتولي الكورة ف اللعب؟",a:["ملي كتضرب وكتتحرك بوضوح","ملي الحكم يصفر للمرة الثانية","ملي لاعب آخر يلمسها"],c:0,e:"الكورة كتولي ف اللعب ملي كتضرب وكتتحرك بوضوح."},
+{q:"واش اللاعب اللي نفّذ ضربة الجزاء يقدر يلمس الكورة مرة ثانية قبل ما يلمسها لاعب آخر؟",a:["إييه","لا","غير إلا طلب من الحكم"],c:1,e:"اللاعب اللي نفّذ ضربة الجزاء ما يقدرش يلمس الكورة مرة ثانية حتى تلمس شي لاعب آخر."},
+{q:"شحال من لاعب يقدر يكونو كحد أقصى فالفريق الواحد فوق أرضية الملعب؟",a:["10 مع الحارس","11 مع الحارس","12 مع الحارس"],c:1,e:"كل فريق كيلعب بحد أقصى 11 لاعب، ومنهم حارس المرمى."},
+{q:"إلا دخلات الكورة مباشرة للمرمى من رمية تماس، واش الهدف كيتحسب؟",a:["إييه ديما","لا، كاين استئناف حسب المرمى اللي دخلات فيه","غير فالشوط الثاني"],c:1,e:"ما يمكنش يتسجل هدف مباشرة من رمية تماس. إلا دخلات لمرمى الخصم كتكون ضربة مرمى، وإلا دخلات لمرمى الرامي كتكون ركنية للخصم."},
+{q:"الحارس شد الكورة بيديه أكثر من 8 ثواني داخل منطقة الجزاء ديالو. شنو القرار حسب القانون الحالي؟",a:["ركنية للفريق المنافس","ضربة جزاء","الحكم يخليه يكمل ديما"],c:0,e:"إلا الحارس بقى متحكم فالكورة بيديه أكثر من 8 ثواني، كتعطى ركنية للفريق المنافس."},
+{q:"شنو الدور الرئيسي ديال الحكم وسط الماتش؟",a:["يلعب مع شي فريق","يسهر على تطبيق قوانين اللعب","يختار شكون يربح"],c:1,e:"الحكم كيسهر على تطبيق قوانين اللعب، وكيقرر فالمخالفات وطرق استئناف اللعب."}
+];
+let i=0,points=0,results=[];
+function start(){
+i=0;points=0;results=[];
+document.getElementById('home').classList.add('hidden');
+document.getElementById('result').classList.add('hidden');
+document.getElementById('game').classList.remove('hidden');
+showQuestion();
+}
+function showQuestion(){
+const q=qs[i];
+document.getElementById('progressText').textContent=`السؤال ${i+1} من ${qs.length} · النقط ${points}/20`;
+document.getElementById('bar').style.width=(i/qs.length*100)+'%';
+document.getElementById('question').textContent=q.q;
+const area=document.getElementById('answers');area.innerHTML='';
+q.a.forEach((answer,n)=>{
+const b=document.createElement('button');
+b.className='answer';b.textContent=answer;
+b.onclick=()=>choose(n);area.appendChild(b);
+});
+document.getElementById('feedback').classList.add('hidden');
+document.getElementById('next').classList.add('hidden');
+}
+function choose(n){
+const q=qs[i],ok=n===q.c;
+if(ok)points+=2;
+results.push({n,ok});
+[...document.getElementById('answers').children].forEach((b,k)=>{
+b.disabled=true;
+if(k===q.c)b.classList.add('correct');
+if(k===n&&!ok)b.classList.add('wrong');
+});
+const f=document.getElementById('feedback');
+f.textContent=(ok?'✅ صحيح، برافو! ':'❌ ماشي هادا هو الجواب الصحيح. ')+q.e;
+f.classList.remove('hidden');
+document.getElementById('progressText').textContent=`السؤال ${i+1} من ${qs.length} · النقط ${points}/20`;
+document.getElementById('bar').style.width=((i+1)/qs.length*100)+'%';
+const next=document.getElementById('next');
+next.textContent=i===qs.length-1?'شوف النتيجة':'السؤال اللي من بعد';
+next.classList.remove('hidden');
+}
+function nextQuestion(){
+if(i<qs.length-1){i++;showQuestion();return;}
+finish();
+}
+function finish(){
+document.getElementById('game').classList.add('hidden');
+document.getElementById('result').classList.remove('hidden');
+document.getElementById('score').textContent=points+' / 20';
+document.getElementById('message').textContent=points>=18?'واعر! مزيان بزاف فالقوانين.':points>=12?'مزيان! راجع التصحيحات باش تزيد تتحسن.':'ماشي مشكل، راجع الشروحات وعاود جرّب.';
+const r=document.getElementById('review');r.innerHTML='';
+qs.forEach((q,k)=>{
+const d=document.createElement('div');
+d.style.borderTop='1px solid #29475a';d.style.padding='12px 0';
+const h=document.createElement('p');h.textContent=(k+1)+'. '+q.q;d.appendChild(h);
+const p=document.createElement('p');
+p.textContent=(results[k].ok?'✅ صحيح. ':'❌ جوابك: '+q.a[results[k].n]+'. ')+'الجواب الصحيح: '+q.a[q.c]+'. '+q.e;
+p.className='small';d.appendChild(p);r.appendChild(d);
+});
+window.scrollTo(0,0);
+}
+</script>
+</body>
+</html>
 <body>
 <main>
 <header class="top">
